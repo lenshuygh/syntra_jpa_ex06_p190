@@ -1,10 +1,12 @@
 package beers;
 
+import javax.persistence.OneToMany;
 import java.util.Set;
 
 public class Category {
     private int id;
     private String category;
+    @OneToMany(mappedBy = "category")
     private Set<Beer> beers;
 
     public int getId() {

@@ -1,6 +1,8 @@
 package beers;
 
 import javax.persistence.Entity;
+import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import java.sql.Blob;
 
 @Entity
@@ -11,8 +13,11 @@ public class Beer {
     private int Stock;
     private float alcohol;
     private int version;
-    private Blob image;
+    @Lob
+    private byte[] image;
+    @ManyToOne
     private Category category;
+    @ManyToOne
     private Brewer brewer;
 
     public int getId() {
@@ -63,11 +68,11 @@ public class Beer {
         this.version = version;
     }
 
-    public Blob getImage() {
+    public byte[] getImage() {
         return image;
     }
 
-    public void setImage(Blob image) {
+    public void setImage(byte[] image) {
         this.image = image;
     }
 

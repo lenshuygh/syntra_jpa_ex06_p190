@@ -1,6 +1,7 @@
 package beers;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import java.util.Set;
 
 @Entity
@@ -11,6 +12,7 @@ public class Brewer {
     private String zipCode;
     private String city;
     private int turnover;
+    @OneToMany(mappedBy = "brewer")
     private Set<Beer> beers;
 
     public int getId() {
