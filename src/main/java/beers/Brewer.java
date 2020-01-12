@@ -1,4 +1,6 @@
-public class Brewers {
+package beers;
+
+public class Brewer {
     private int id;
     private String name;
     private String address;

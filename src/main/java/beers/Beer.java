@@ -1,6 +1,8 @@
+package beers;
+
 import java.sql.Blob;
 
-public class Beers {
+public class Beer {
     private int id;
     private String name;
     private float Price;
