@@ -29,19 +29,27 @@ public class BrewerServiceImpl implements BrewerService {
     @Override
     public Brewer getBrewerById(int brewerId) {
         startSession();
-        return em.find(Brewer.class, brewerId);
+        try {
+            return em.find(Brewer.class, brewerId);
+        }finally {
+            closeSession();
+        }
     }
 
     private List<Brewer> getBrewerByQuery(TypedQuery<Brewer> categoryTypedQuery) {
         try {
             return categoryTypedQuery.getResultList();
         } finally {
-            if (em != null) {
-                em.close();
-            }
-            if (emf != null) {
-                emf.close();
-            }
+            closeSession();
+        }
+    }
+
+    private void closeSession() {
+        if (em != null) {
+            em.close();
+        }
+        if (emf != null) {
+            emf.close();
         }
     }
 }

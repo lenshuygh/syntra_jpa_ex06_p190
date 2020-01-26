@@ -36,19 +36,27 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public Category getCategoryById(int categoryId) {
         startSession();
-        return em.find(Category.class, categoryId);
+        try {
+            return em.find(Category.class, categoryId);
+        } finally {
+            closeSession();
+        }
     }
 
     private List<Category> getCategoriesByQuery(TypedQuery<Category> categoryTypedQuery) {
         try {
             return categoryTypedQuery.getResultList();
         } finally {
-            if (em != null) {
-                em.close();
-            }
-            if (emf != null) {
-                emf.close();
-            }
+            closeSession();
+        }
+    }
+
+    private void closeSession() {
+        if (em != null) {
+            em.close();
+        }
+        if (emf != null) {
+            emf.close();
         }
     }
 }
