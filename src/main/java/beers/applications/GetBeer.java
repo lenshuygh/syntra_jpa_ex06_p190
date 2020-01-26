@@ -1,36 +1,17 @@
 package beers.applications;
 
 import beers.model.Beer;
+import beers.service.BeerService;
+import beers.service.BeerServiceImpl;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
 import java.util.Scanner;
 
 public class GetBeer {
+    static BeerService beerService = new BeerServiceImpl();
+
     public static void main(String[] args) {
-        EntityManagerFactory emf = null;
-        EntityManager em = null;
-
-        try {
-            emf = Persistence.createEntityManagerFactory("beers");
-            em = emf.createEntityManager();
-            EntityTransaction tx = em.getTransaction();
-            tx.begin();
-
-            Beer beer = em.find(Beer.class, getBeerId());
+            Beer beer = beerService.getBeerById(getBeerId());
             System.out.println(beer);
-
-            tx.commit();
-        } finally {
-            if (em != null) {
-                em.close();
-            }
-            if (emf != null) {
-                emf.close();
-            }
-        }
     }
 
     private static int getBeerId() {

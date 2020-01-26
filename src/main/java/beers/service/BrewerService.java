@@ -8,4 +8,5 @@ public interface BrewerService {
     List<Brewer> getAllBrewers();
 
     Brewer getBrewerById(int brewerId);
+
 }
