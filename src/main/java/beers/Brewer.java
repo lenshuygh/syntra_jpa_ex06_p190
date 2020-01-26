@@ -1,17 +1,22 @@
 package beers;
 
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import lombok.ToString;
+
+import javax.persistence.*;
 import java.util.Set;
 
+@ToString
 @Entity(name = "Brewers")
 public class Brewer {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
     private String address;
     private String zipCode;
     private String city;
     private int turnover;
+    @ToString.Exclude
     @OneToMany(mappedBy = "brewer")
     private Set<Beer> beers;
 
@@ -71,16 +76,4 @@ public class Brewer {
         this.beers = beers;
     }
 
-    @Override
-    public String toString() {
-        return "Brewer{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", address='" + address + '\'' +
-                ", zipCode='" + zipCode + '\'' +
-                ", city='" + city + '\'' +
-                ", turnover=" + turnover +
-                ", beers=" + beers +
-                '}';
-    }
 }

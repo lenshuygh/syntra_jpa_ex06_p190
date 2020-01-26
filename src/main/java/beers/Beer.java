@@ -1,13 +1,14 @@
 package beers;
 
-import javax.persistence.Entity;
-import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import java.sql.Blob;
+import lombok.ToString;
 
+import javax.persistence.*;
+
+@ToString
 @Entity(name = "Beers")
 public class Beer {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
     private float Price;
@@ -17,8 +18,10 @@ public class Beer {
     @Lob
     private byte[] image;
     @ManyToOne
+    @JoinColumn(name = "CategoryId")
     private Category category;
     @ManyToOne
+    @JoinColumn(name = "BrewerId")
     private Brewer brewer;
 
     public int getId() {
@@ -91,20 +94,5 @@ public class Beer {
 
     public void setBrewer(Brewer brewer) {
         this.brewer = brewer;
-    }
-
-    @Override
-    public String toString() {
-        return "Beer{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", Price=" + Price +
-                ", Stock=" + Stock +
-                ", alcohol=" + alcohol +
-                ", version=" + version +
-                ", image=" + image +
-                ", category=" + category +
-                ", brewer=" + brewer +
-                '}';
     }
 }
