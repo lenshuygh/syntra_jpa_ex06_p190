@@ -1,5 +1,6 @@
 package beers.applications;
 
+import beers.model.Beer;
 import beers.model.Brewer;
 import beers.model.Category;
 import beers.service.BrewerService;
@@ -25,6 +26,10 @@ public class AddBeer {
         System.out.printf("\nEnter an id for a category: ");
         int categoryId= scanner.nextInt();
 
+        Brewer brewer = brewerService.getBrewerById(brewerId);
+        Category category = categoryService.getCategoryById(categoryId);
 
+        System.out.println(category);
+        System.out.println(brewer);
     }
 }

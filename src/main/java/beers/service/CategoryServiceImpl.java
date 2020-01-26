@@ -33,6 +33,12 @@ public class CategoryServiceImpl implements CategoryService {
         return getCategoriesByQuery(query);
     }
 
+    @Override
+    public Category getCategoryById(int categoryId) {
+        startSession();
+        return em.find(Category.class, categoryId);
+    }
+
     private List<Category> getCategoriesByQuery(TypedQuery<Category> categoryTypedQuery) {
         try {
             return categoryTypedQuery.getResultList();

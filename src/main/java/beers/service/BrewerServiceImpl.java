@@ -6,20 +6,35 @@ import javax.persistence.*;
 import java.util.List;
 
 public class BrewerServiceImpl implements BrewerService {
+    EntityManagerFactory emf = null;
+    EntityManager em = null;
+    List<Brewer> brewerList = null;
+    EntityTransaction tx = null;
+
+    public void startSession() {
+        emf = Persistence.createEntityManagerFactory("beers");
+        em = emf.createEntityManager();
+        tx = em.getTransaction();
+        tx.begin();
+    }
+
     @Override
     public List<Brewer> getAllBrewers() {
-        EntityManagerFactory emf = null;
-        EntityManager em = null;
-        List<Brewer> brewerList= null;
+        startSession();
+        TypedQuery<Brewer> query = em.createQuery("SELECT b FROM Brewers b", Brewer.class);
+        brewerList = getBrewerByQuery(query);
+        return brewerList;
+    }
+
+    @Override
+    public Brewer getBrewerById(int brewerId) {
+        startSession();
+        return em.find(Brewer.class, brewerId);
+    }
+
+    private List<Brewer> getBrewerByQuery(TypedQuery<Brewer> categoryTypedQuery) {
         try {
-            emf = Persistence.createEntityManagerFactory("beers");
-            em = emf.createEntityManager();
-            EntityTransaction tx = em.getTransaction();
-            tx.begin();
-
-            TypedQuery<Brewer> query = em.createQuery("SELECT b FROM Brewers b", Brewer.class);
-            brewerList = query.getResultList();
-
+            return categoryTypedQuery.getResultList();
         } finally {
             if (em != null) {
                 em.close();
@@ -28,6 +43,5 @@ public class BrewerServiceImpl implements BrewerService {
                 emf.close();
             }
         }
-        return brewerList;
     }
 }
