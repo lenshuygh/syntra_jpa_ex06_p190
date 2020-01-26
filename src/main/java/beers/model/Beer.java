@@ -5,11 +5,12 @@ import lombok.*;
 import javax.persistence.*;
 
 @ToString
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity(name = "Beers")
 @Builder
+@Entity(name = "Beers")
 public class Beer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

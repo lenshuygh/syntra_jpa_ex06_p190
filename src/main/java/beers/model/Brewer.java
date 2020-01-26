@@ -1,14 +1,13 @@
 package beers.model;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Set;
 
 @ToString
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @Entity(name = "Brewers")
 public class Brewer {
@@ -21,6 +20,6 @@ public class Brewer {
     private String city;
     private int turnover;
     @ToString.Exclude
-    @OneToMany(mappedBy = "brewer")
+    @OneToMany(mappedBy = "brewer",orphanRemoval = true)
     private Set<Beer> beers;
 }

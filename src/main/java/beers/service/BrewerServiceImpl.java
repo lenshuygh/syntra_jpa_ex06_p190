@@ -31,7 +31,7 @@ public class BrewerServiceImpl implements BrewerService {
         startSession();
         try {
             return em.find(Brewer.class, brewerId);
-        }finally {
+        } finally {
             closeSession();
         }
     }
@@ -39,6 +39,17 @@ public class BrewerServiceImpl implements BrewerService {
     private List<Brewer> getBrewerByQuery(TypedQuery<Brewer> categoryTypedQuery) {
         try {
             return categoryTypedQuery.getResultList();
+        } finally {
+            closeSession();
+        }
+    }
+
+    @Override
+    public void removeBrewer(int nextInt) {
+        try {
+            startSession();
+            Brewer brewer = em.find(Brewer.class,nextInt);
+            em.remove(brewer);
         } finally {
             closeSession();
         }

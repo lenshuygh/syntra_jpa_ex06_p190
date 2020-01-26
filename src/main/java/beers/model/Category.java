@@ -1,14 +1,13 @@
 package beers.model;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Set;
 
 @ToString
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @Entity(name = "Categories")
 public class Category {

@@ -9,4 +9,5 @@ public interface BrewerService {
 
     Brewer getBrewerById(int brewerId);
 
+    void removeBrewer(int nextInt);
 }
