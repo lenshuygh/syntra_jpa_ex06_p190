@@ -1,6 +1,6 @@
 package beers.service;
 
-import beers.Category;
+import beers.model.Category;
 
 import java.util.List;
 

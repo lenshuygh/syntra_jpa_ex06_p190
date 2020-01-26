@@ -1,6 +1,6 @@
 package beers.service;
 
-import beers.Brewer;
+import beers.model.Brewer;
 
 import javax.persistence.*;
 import java.util.List;

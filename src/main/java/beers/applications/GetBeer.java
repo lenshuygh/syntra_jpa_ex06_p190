@@ -1,4 +1,6 @@
-package beers;
+package beers.applications;
+
+import beers.model.Beer;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
