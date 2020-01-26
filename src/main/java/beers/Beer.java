@@ -3,9 +3,10 @@ package beers;
 import javax.persistence.Entity;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import java.sql.Blob;
 
-@Entity
+@Entity(name = "Beers")
 public class Beer {
     private int id;
     private String name;

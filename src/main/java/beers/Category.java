@@ -1,8 +1,10 @@
 package beers;
 
+import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import java.util.Set;
 
+@Entity(name = "Categories")
 public class Category {
     private int id;
     private String category;
