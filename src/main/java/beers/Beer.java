@@ -1,11 +1,13 @@
 package beers;
 
+import lombok.Builder;
 import lombok.ToString;
 
 import javax.persistence.*;
 
 @ToString
 @Entity(name = "Beers")
+@Builder
 public class Beer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
