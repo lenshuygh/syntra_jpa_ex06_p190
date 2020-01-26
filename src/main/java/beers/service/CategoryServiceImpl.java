@@ -52,6 +52,7 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     private void closeSession() {
+        tx.commit();
         if (em != null) {
             em.close();
         }

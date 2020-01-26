@@ -45,6 +45,7 @@ public class BrewerServiceImpl implements BrewerService {
     }
 
     private void closeSession() {
+        tx.commit();
         if (em != null) {
             em.close();
         }

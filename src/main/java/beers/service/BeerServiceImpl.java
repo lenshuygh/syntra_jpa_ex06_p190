@@ -31,6 +31,7 @@ public class BeerServiceImpl implements BeerService {
     }
 
     public void closeSession() {
+        tx.commit();
         if (em != null) {
             em.close();
         }
