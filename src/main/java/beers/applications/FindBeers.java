@@ -18,7 +18,7 @@ public class FindBeers {
         doQuery(query);
 
         System.out.println("Beers with alc. % of 4, 6, 8 or 10");
-        query = entityManager.createNamedQuery("beersByAlcoholInArrayOf4Ints", Beer.class);
+        query = entityManager.createNamedQuery("beersByAlcoholInArrayOf4Floats", Beer.class);
         query.setParameter(1, 4F);
         query.setParameter(2, 6F);
         query.setParameter(3, 8F);
@@ -59,6 +59,13 @@ public class FindBeers {
         query = entityManager.createNamedQuery("beersByCategory", Beer.class);
         query.setParameter(1, "Pils");
         System.out.printf("%.2f",query.getResultList().stream().mapToDouble(Beer::getPrice).average().getAsDouble());
+
+        if( entityManagerFactory != null){
+            entityManagerFactory.close();
+        }
+        if(entityManager != null){
+            entityManager.close();
+        }
     }
 
     private static void doQuery(TypedQuery query){
