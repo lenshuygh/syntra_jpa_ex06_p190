@@ -9,6 +9,7 @@ import javax.persistence.*;
 @NamedQuery(name = "beersByPartOfName", query = "select b from Beers b where lower(b.name) like lower(?1)")
 @NamedQuery(name = "beersByBrewerZipCode", query = "select b from Beers b join b.brewer br where br.zipCode = ?1")
 @NamedQuery(name = "beersByCategory", query = "select b from Beers b join b.category c where c.category = ?1")
+@NamedQuery(name = "avgPriceOfBeersByCategory", query = "select avg (b.price) from Beers b join b.category c where c.category = ?1")
 @ToString
 @Getter
 @Setter
