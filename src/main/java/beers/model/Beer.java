@@ -4,7 +4,11 @@ import lombok.*;
 
 import javax.persistence.*;
 
-@NamedQuery(name="beersByAlcoholBetween",query = "select b from Beers b where b.alcohol between ?1 and ?2")
+@NamedQuery(name = "beersByAlcoholBetween", query = "select b from Beers b where b.alcohol between ?1 and ?2")
+@NamedQuery(name = "beersByAlcoholInArrayOf4Ints", query = "select b from Beers b where b.alcohol in (?1,?2,?3,?4)")
+@NamedQuery(name = "beersByPartOfName", query = "select b from Beers b where lower(b.name) like lower(?1)")
+@NamedQuery(name = "beersByBrewerZipCode", query = "select b from Beers b join b.brewer br where br.zipCode = ?1")
+@NamedQuery(name = "beersByCategory", query = "select b from Beers b join b.category c where c.category = ?1")
 @ToString
 @Getter
 @Setter

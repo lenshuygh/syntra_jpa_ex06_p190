@@ -5,6 +5,7 @@ import lombok.*;
 import javax.persistence.*;
 import java.util.Set;
 
+@NamedQuery(name = "uniqueCategoriesWithBeersByAlcohol", query = "select distinct c from Categories c join c.beers b where b.alcohol = ?1")
 @ToString
 @Getter
 @Setter
