@@ -30,7 +30,7 @@ public class AddBeer {
         System.out.println(category);
         System.out.println(brewer);
 
-        Beer beer = Beer.builder().alcohol(5f).brewer(brewer).category(category).name("Lens Test Beer").Price(6.66f).Stock(70).version(1).build();
+        Beer beer = Beer.builder().alcohol(5f).brewer(brewer).category(category).name("Lens Test Beer").price(6.66f).stock(70).version(1).build();
         System.out.println(beer);
 
         System.out.println(beerService.saveBeer(beer));

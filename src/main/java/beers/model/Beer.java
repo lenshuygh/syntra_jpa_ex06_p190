@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 
+@NamedQuery(name="beersByAlcoholBetween",query = "select b from Beers b where b.alcohol between ?1 and ?2")
 @ToString
 @Getter
 @Setter
@@ -16,8 +17,8 @@ public class Beer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
-    private float Price;
-    private int Stock;
+    private float price;
+    private int stock;
     private float alcohol;
     private int version;
     @Lob
