@@ -26,14 +26,6 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public List<Category> getCategoriesByName(String name) {
-        startSession();
-        TypedQuery<Category> query = em.createQuery("SELECT c FROM Categories c where lower(c.category) like lower(?1)", Category.class);
-        query.setParameter(1, "%" + name + "%");
-        return getCategoriesByQuery(query);
-    }
-
-    @Override
     public Category getCategoryById(int categoryId) {
         startSession();
         try {

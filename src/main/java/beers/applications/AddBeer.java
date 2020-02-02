@@ -16,8 +16,6 @@ public class AddBeer {
 
         brewerService.getAllBrewers().stream().map(Brewer::toString).forEach(System.out::println);
         categoryService.getAllCategories().stream().map(Category::toString).forEach(System.out::println);
-        System.out.println(categoryService.getCategoriesByName("geuz").toString());
-        System.out.println(categoryService.getCategoriesByName("Traditionele Geuze").toString());
 
         System.out.printf("Enter an id for a Brewer: ");
         int brewerId = scanner.nextInt();
