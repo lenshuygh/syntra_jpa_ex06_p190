@@ -10,7 +10,5 @@ public interface BeerService {
 
     Beer getBeerById(int beerId);
 
-    List<Beer> getBeersByName(String beerName);
-
     List<Beer> getBeerByBrewerId(Brewer brewer);
 }
